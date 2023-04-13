@@ -44,7 +44,7 @@ RUN curl -L --silent ${JMETER_PLUGINS_DOWNLOAD_URL}/jmeter-plugins-cmn-jmeter/0.
 # Set global PATH such that "jmeter" command is found
 ENV PATH $PATH:$JMETER_BIN
 
-COPY launch.sh /
+#COPY launch.sh /
 
 WORKDIR ${JMETER_HOME}
 
@@ -56,10 +56,12 @@ WORKDIR ${JMETER_HOME}
 
 #ENTRYPOINT ["/launch.sh"]
 
-ENTRYPOINT [""]	 	
-
 #ENTRYPOINT ["/entrypoint.sh"]
 
-#ENTRYPOINT sh ${JMETER_HOME}/bin/jmeter.sh -n -t ${JMETER_HOME}/bin/examples/${SCRIPT_NAME} -R 10.0.2.2,10.0.2.3 -l ${JMETER_HOME}/bin/reports/report1.log -e -o ${JMETER_HOME}/bin/reports  \
+ENTRYPOINT sh ${JMETER_HOME}/bin/jmeter-server.sh  \ 
+           && -n  \
+		   && --net JMETER_NET --ip 172.18.0.101  \
+		   && -Jclient.rmi.localport=7000 -Jserver.rmi.localport=60000
+#-n -t ${JMETER_HOME}/bin/examples/${SCRIPT_NAME} -R 10.0.2.2,10.0.2.3 -l ${JMETER_HOME}/bin/reports/report1.log -e -o ${JMETER_HOME}/bin/reports  \
 #    	&& cd ${JMETER_HOME}/bin/reports/  \
 #    	&& zip -r API_PERF_Results.zip .
