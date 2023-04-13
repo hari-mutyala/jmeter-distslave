@@ -32,10 +32,10 @@ RUN    apk update \
 	&& tar -xzf /tmp/dependencies/apache-jmeter-${JMETER_VERSION}.tgz -C /opt  \
 	&& rm -rf /tmp/dependencies  \
 	&& chmod +x ${JMETER_HOME}/bin/  \
-#	&& chmod +x ${JMETER_HOME}/bin/examples/  \
+	&& chmod +x ${JMETER_HOME}/bin/examples/  \
 	&& apk add --update zip  \
-#	&& mkdir -p -m 777 ${JMETER_HOME}/bin/reports  \
-#	&& chmod 777 ${JMETER_HOME}/bin/reports  \
+	&& mkdir -p -m 777 ${JMETER_HOME}/bin/reports  \
+	&& chmod 777 ${JMETER_HOME}/bin/reports  \
 	&& echo "server.rmi.ssl.disable=true" >> ${JMETER_HOME}/bin/jmeter.properties
 
 #RUN curl -L --silent ${JMETER_PLUGINS_DOWNLOAD_URL}/jmeter-plugins-dummy/0.4/jmeter-plugins-dummy-0.4.jar -o ${JMETER_PLUGINS_FOLDER}/jmeter-plugins-dummy-0.4.jar
@@ -58,10 +58,9 @@ WORKDIR ${JMETER_HOME}
 
 #ENTRYPOINT ["/entrypoint.sh"]
 
-ENTRYPOINT sh ${JMETER_HOME}/bin/jmeter-server  \ 
-           && -n  \
-		   && --net jmeter-tmpnw --ip 172.18.0.101  \
-		   && -Jclient.rmi.localport=7000 -Jserver.rmi.localport=60000
+ENTRYPOINT sh ${JMETER_HOME}/bin/jmeter-server -n -Jclient.rmi.localport=7000 -Jserver.rmi.localport=60000 -j ${JMETER_HOME}/bin/reports/slave.log \
+		  # --net jmeter-tmpnw --ip 172.18.0.101  \
+		   
 #-n -t ${JMETER_HOME}/bin/examples/${SCRIPT_NAME} -R 10.0.2.2,10.0.2.3 -l ${JMETER_HOME}/bin/reports/report1.log -e -o ${JMETER_HOME}/bin/reports  \
 #    	&& cd ${JMETER_HOME}/bin/reports/  \
 #    	&& zip -r API_PERF_Results.zip .
