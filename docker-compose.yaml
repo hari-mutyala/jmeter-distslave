@@ -32,18 +32,25 @@ services:
       #-dit
       # -X --rm  \
 
-  # slave2:
-  #   image: hmutyala/jmeter-distributed
-  #   networks:
-  #     jmeter-net:
-  #       ipv4_address: 192.168.1.12
-  #   volumes:
-  #     - .:/mnt/jmeter    
-  #   command:
-  #     -dit --net jmeter_net --ip $IP_ADD \
-  #     -v "$(pwd)":/mnt/jmeter \
-  #     -Jserver.rmi.localport=60000  \
-  #     -Jserver.rmi.ssl.keystore.file=/mnt/jmeter/rmi_keystore.jks
+  slave2:
+    image: hmutyala/jmeter-distslave
+    networks:
+      jmeter-net:
+        ipv4_address: 192.168.2.12
+    volumes:
+     - jmeter-vol:/mnt/jmeter
+    command:
+
+  slave3:
+    image: hmutyala/jmeter-distslave
+    networks:
+      jmeter-net:
+        ipv4_address: 192.168.2.13
+    volumes:
+     - jmeter-vol:/mnt/jmeter
+    command:
+
+
   # master:
   #   image: hmutyala/jmeter-distributed
   #   volumes:
