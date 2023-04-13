@@ -58,7 +58,7 @@ WORKDIR ${JMETER_HOME}
 
 #ENTRYPOINT ["/entrypoint.sh"]
 
-ENTRYPOINT sh ${JMETER_HOME}/bin/jmeter-server.sh  \ 
+ENTRYPOINT sh ${JMETER_HOME}/bin/jmeter-server  \ 
            && -n  \
 		   && --net JMETER_NET --ip 172.18.0.101  \
 		   && -Jclient.rmi.localport=7000 -Jserver.rmi.localport=60000
