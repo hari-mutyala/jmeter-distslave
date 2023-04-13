@@ -58,7 +58,7 @@ WORKDIR ${JMETER_HOME}
 
 #ENTRYPOINT ["/entrypoint.sh"]
 
-ENTRYPOINT sh ${JMETER_HOME}/bin/jmeter-server -n -Jclient.rmi.localport=7000 -Jserver.rmi.localport=60000 -j ${JMETER_HOME}/bin/reports/slave.log
+ENTRYPOINT sh ${JMETER_HOME}/bin/jmeter-server -n -Jclient.rmi.localport=7000 -Jserver.rmi.localport=60000
 		  # --net jmeter-tmpnw --ip 172.18.0.101  \
 		   
 #-n -t ${JMETER_HOME}/bin/examples/${SCRIPT_NAME} -R 10.0.2.2,10.0.2.3 -l ${JMETER_HOME}/bin/reports/report1.log -e -o ${JMETER_HOME}/bin/reports  \
