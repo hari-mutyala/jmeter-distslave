@@ -51,14 +51,14 @@ services:
     command:
 
 
-  # master:
-  #   image: hmutyala/jmeter-distributed
-  #   volumes:
-  #    - jmeter-vol:/mnt/jmeter
-  #   networks:
-  #     jmeter-net:
-  #       ipv4_address: 192.168.1.10      
-  #   command:
+  master:
+    image: hmutyala/jmeter-distmaster
+    networks:
+      jmeter-net:
+        ipv4_address: 192.168.2.10     
+    volumes:
+     - jmeter-vol:/mnt/jmeter
+    command:
   #     -n -X --rm
   #     -Jclient.rmi.localport=7000  \      
   #     -Jserver.rmi.ssl.keystore.file=/mnt/jmeter/rmi_keystore.jks  \
@@ -66,7 +66,10 @@ services:
   #     -t /mnt/jmeter/Distri_Test1.jmx  \
   #     -l /mnt/jmeter/master/result_$(date+%Y%m%d_%H%M%S).jtl  \
   #     -j /mnt/jmeter/master/jmeter_$(date+%Y%m%d_%H%M%S).log
-
+    depends_on:
+      - slave1
+      - slave2
+      - slave3
 
 # services:
 #   jmetermaster:
