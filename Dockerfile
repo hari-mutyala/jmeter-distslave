@@ -60,7 +60,7 @@ WORKDIR ${JMETER_HOME}
 
 ENTRYPOINT sh ${JMETER_HOME}/bin/jmeter-server  \ 
            && -n  \
-		   && --net JMETER_NET --ip 172.18.0.101  \
+		   && --net jmeter-tmpnw --ip 172.18.0.101  \
 		   && -Jclient.rmi.localport=7000 -Jserver.rmi.localport=60000
 #-n -t ${JMETER_HOME}/bin/examples/${SCRIPT_NAME} -R 10.0.2.2,10.0.2.3 -l ${JMETER_HOME}/bin/reports/report1.log -e -o ${JMETER_HOME}/bin/reports  \
 #    	&& cd ${JMETER_HOME}/bin/reports/  \
