@@ -45,7 +45,7 @@ services:
       jmeter-net:
         ipv4_address: 192.168.2.13
     volumes:
-    # - jmeter-vol:/mnt/jmeter
+      - jmeter-vol:/mnt/jmeter
     command:
       -n -Jclient.rmi.localport=7000 -Jserver.rmi.localport=60000
  
