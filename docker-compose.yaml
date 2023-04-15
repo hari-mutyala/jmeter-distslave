@@ -23,35 +23,31 @@ services:
     networks:
       jmeter-net:
         ipv4_address: 192.168.2.11
-    #volumes:
-    # - jmeter-vol:/mnt/jmeter
+    volumes:
+      - jmeter-vol:/mnt/jmeter
     command:
-      #- /opt/apache-jmeter-5.5/bin/jmeter-server -n -Jclient.rmi.localport=7000 -Jserver.rmi.localport=60000
-     #  -s -n      
-    #  -Jclient.rmi.localport=7000 -Jserver.rmi.localport=60000  \    
-    #  -j /mnt/jmeter/slave_$(date+%Y%m%d_%H%M%S)_192.168.1.11.logdone
-      #-dit
-      # -X --rm  \
+      - -n -Jclient.rmi.localport=7000 -Jserver.rmi.localport=60000
+  
 
   slave2:
     image: hmutyala/jmeter-distslave
     networks:
       jmeter-net:
         ipv4_address: 192.168.2.12
-    #volumes:
-     # - jmeter-vol:/mnt/jmeter
+    volumes:
+     - jmeter-vol:/mnt/jmeter
     command:
-      #- opt/apache-jmeter-5.5/bin/jmeter-server -n -Jclient.rmi.localport=7000 -Jserver.rmi.localport=60000
+      -n -Jclient.rmi.localport=7000 -Jserver.rmi.localport=60000
   
   slave3:
     image: hmutyala/jmeter-distslave
     networks:
       jmeter-net:
         ipv4_address: 192.168.2.13
-    #volumes:
+    volumes:
     # - jmeter-vol:/mnt/jmeter
     command:
-     # - /opt/apache-jmeter-5.5/bin/jmeter-server -n -Jclient.rmi.localport=7000 -Jserver.rmi.localport=60000'
+      -n -Jclient.rmi.localport=7000 -Jserver.rmi.localport=60000
  
   master:
     image: hmutyala/jmeter-distmaster
