@@ -47,8 +47,8 @@ WORKDIR ${JMETER_HOME}
 
 #COPY launch.sh /
 
-#ENTRYPOINT ["/launch.sh"]
 ENTRYPOINT [""]
+#ENTRYPOINT sh ${JMETER_HOME}/bin/jmeter-server -n
 
 #ENTRYPOINT ["/entrypoint.sh"]
 
