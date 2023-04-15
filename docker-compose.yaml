@@ -26,7 +26,7 @@ services:
     volumes:
      - jmeter-vol:/mnt/jmeter
     command:
-      - '/opt/apache-jmeter-5.5/bin/jmeter-server -n -Jclient.rmi.localport=7000 -Jserver.rmi.localport=60000'
+      - /opt/apache-jmeter-5.5/bin/jmeter-server -n -Jclient.rmi.localport=7000 -Jserver.rmi.localport=60000
      #  -s -n      
     #  -Jclient.rmi.localport=7000 -Jserver.rmi.localport=60000  \    
     #  -j /mnt/jmeter/slave_$(date+%Y%m%d_%H%M%S)_192.168.1.11.logdone
@@ -41,7 +41,7 @@ services:
     volumes:
       - jmeter-vol:/mnt/jmeter
     command:
-      - '/opt/apache-jmeter-5.5/bin/jmeter-server -n -Jclient.rmi.localport=7000 -Jserver.rmi.localport=60000'
+      - opt/apache-jmeter-5.5/bin/jmeter-server -n -Jclient.rmi.localport=7000 -Jserver.rmi.localport=60000
   
   slave3:
     image: hmutyala/jmeter-distslave
@@ -51,7 +51,7 @@ services:
     volumes:
      - jmeter-vol:/mnt/jmeter
     command:
-      - '/opt/apache-jmeter-5.5/bin/jmeter-server -n -Jclient.rmi.localport=7000 -Jserver.rmi.localport=60000'
+      - /opt/apache-jmeter-5.5/bin/jmeter-server -n -Jclient.rmi.localport=7000 -Jserver.rmi.localport=60000
  
   master:
     image: hmutyala/jmeter-distmaster
