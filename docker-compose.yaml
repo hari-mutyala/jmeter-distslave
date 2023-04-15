@@ -26,7 +26,8 @@ services:
     volumes:
      - jmeter-vol:/mnt/jmeter
     command:
-    #  -s -n      
+      - sh ${JMETER_HOME}/bin/jmeter-server -n -Jclient.rmi.localport=7000 -Jserver.rmi.localport=60000
+     #  -s -n      
     #  -Jclient.rmi.localport=7000 -Jserver.rmi.localport=60000  \    
     #  -j /mnt/jmeter/slave_$(date+%Y%m%d_%H%M%S)_192.168.1.11.logdone
       #-dit
@@ -38,9 +39,10 @@ services:
       jmeter-net:
         ipv4_address: 192.168.2.12
     volumes:
-     - jmeter-vol:/mnt/jmeter
+      - jmeter-vol:/mnt/jmeter
     command:
-
+      - sh ${JMETER_HOME}/bin/jmeter-server -n -Jclient.rmi.localport=7000 -Jserver.rmi.localport=60000
+  
   slave3:
     image: hmutyala/jmeter-distslave
     networks:
@@ -49,13 +51,13 @@ services:
     volumes:
      - jmeter-vol:/mnt/jmeter
     command:
-
+      - sh ${JMETER_HOME}/bin/jmeter-server -n -Jclient.rmi.localport=7000 -Jserver.rmi.localport=60000
 
   master:
     image: hmutyala/jmeter-distmaster
     networks:
       jmeter-net:
-        ipv4_address: 192.168.2.10     
+        ipv4_address: 192.168.2.10    
     volumes:
      - jmeter-vol:/mnt/jmeter
     command:
