@@ -56,13 +56,8 @@ services:
     volumes:
       - jmeter-vol:/mnt/jmeter    
     command:
-  #     -n -X --rm
-  #     -Jclient.rmi.localport=7000  \      
-  #     -Jserver.rmi.ssl.keystore.file=/mnt/jmeter/rmi_keystore.jks  \
-  #     -R 192.168.1.11  \
-  #     -t /mnt/jmeter/Distri_Test1.jmx  \
-  #     -l /mnt/jmeter/master/result_$(date+%Y%m%d_%H%M%S).jtl  \
-  #     -j /mnt/jmeter/master/jmeter_$(date+%Y%m%d_%H%M%S).log
+       -n -X -Jclient.rmi.localport=7000 -R ${jmeterip_slave1},${jmeterip_slave2},${jmeterip_slave3} -t ${jmeter_home}/bin/examples/${SCRIPT_NAME}
+    #   -n -X -Jclient.rmi.localport=7000 -R ${jmeterip_slave1},${jmeterip_slave2},${jmeterip_slave3} -t ${jmeter_home}/bin/examples/${SCRIPT_NAME} -l ${jmeter_home}/bin/reports/${SCRIPT_NAME}_results.jtl -e -o ${JMETER_HOME}/bin/reports && cd ${JMETER_HOME}/bin/reports/ && zip -r ${SCRIPT_NAME}_results.zip . 
     depends_on:
       - slave1
       - slave2
