@@ -56,7 +56,7 @@ services:
     volumes:
       - jmeter-vol:/mnt/jmeter    
     command:      
-      -n -Jclient.rmi.localport=7000 -R ${jmeterip_slave1},${jmeterip_slave2},${jmeterip_slave3}
+      -Jclient.rmi.localport=7000 -R ${jmeterip_slave1},${jmeterip_slave2},${jmeterip_slave3}
     #   -n -X -Jclient.rmi.localport=7000 -t ${jmeter_home}/bin/examples/${SCRIPT_NAME} -l ${jmeter_home}/bin/reports/${SCRIPT_NAME}_results.jtl -e -o ${JMETER_HOME}/bin/reports && cd ${JMETER_HOME}/bin/reports/ && zip -r ${SCRIPT_NAME}_results.zip . 
     depends_on:
       - slave1
