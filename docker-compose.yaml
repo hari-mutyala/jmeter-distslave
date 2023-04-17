@@ -52,7 +52,7 @@ services:
     image: hmutyala/jmeter-distmaster
     networks:
       jmeter-net:
-        ipv4_address: ${jmeterip-master}
+        ipv4_address: ${jmeterip_master}
     volumes:
       - jmeter-vol:/mnt/jmeter    
     command:
