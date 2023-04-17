@@ -32,7 +32,7 @@ services:
     image: hmutyala/jmeter-distslave
     networks:
       jmeter-net:
-        ipv4_address: ${jmeteripslave2}
+        ipv4_address: ${jmeterip_slave2}
     volumes:
      - jmeter-vol:/mnt/jmeter
     command:
@@ -52,7 +52,7 @@ services:
     image: hmutyala/jmeter-distmaster
     networks:
       jmeter-net:
-        ipv4_address: ${jmeteripmaster}
+        ipv4_address: ${jmeter-ipmaster}
     volumes:
       - jmeter-vol:/mnt/jmeter    
     command:
