@@ -25,7 +25,7 @@ services:
       - jmeter-vol:/mnt/jmeter
     command:
       - -n -Jclient.rmi.localport=${jmeter_clientport} -Jserver.rmi.localport={jmeter_serverport}
-      - -j /mnt/jmeter/server/slave_${timestamp}_${IP_ADD:9:3}.logdone
+      - -j /mnt/jmeter/server/slave_${jmeterip_slave1}.logdone
   
 
   slave2:
